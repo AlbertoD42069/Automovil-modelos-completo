@@ -2,7 +2,6 @@ import React from 'react'
 import Head from "next/dist/shared/lib/head";
 import _fetch from "isomorphic-fetch";
 import Navegacion from '../Components/navigation';
-import Table from "../Components/Table/Table";
 import Link from 'next/link';
 import Pagination from '../Components/Pagination';
 import Table_List_Brand from '../Components/Table/Table_List_Brand';

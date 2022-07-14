@@ -4,30 +4,28 @@ import Table_modelos from '../../Components/Table/Table_model';
 import Navegation from '../../Components/navigation';
 import Link from 'next/link';
 import Pagination from '../../Components/Pagination';
+import Button_Add_Model from '../Button_Add_Model';
 
 
-const Modelos = (props) => {
+const Modelos = () => {
     return (
-        <div>
-        <Head>
-            
-            <title> Modelo </title>
-        </Head>
-        <div className="container p-2">
-        <Navegation/>
-            {props.children}
-            <h3>Agregar modelo</h3><br/>
+        <div  className='container p-2'>
+            <Head>
+                
+                <title> Modelo </title>
+            </Head>
+            <Navegation/>
+
+            <h3>Modelo</h3><br/>
+
+            <div className="container p-2">
+
             <Table_modelos/>
+
             <div style={{ display: "flex" }}>
                     <div style={{ marginLeft: "auto" }}><Pagination/></div>
                 </div>
-            <div style={{ display: "flex" }}>
-                <Link href="/Model/Add_Model">
-                <button type="button" className="btn btn-primary rounded" style={{ marginLeft: "auto" }}>
-                    agregar
-                </button>
-                </Link>
-            </div>
+                <Button_Add_Model/>
         </div>
     </div>
     )
