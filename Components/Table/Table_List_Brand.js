@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import Table_Brand from "../Table/Table_Brand";
 import Link from "next/link";
 
 const Table_List_Brand = () => {
@@ -7,6 +6,8 @@ const Table_List_Brand = () => {
     const AUTO_API_BASE_URL = "http://localhost:8080/api/automovil";
     const [Automovil, setAutomovil] = useState(null);
     const [loading, setLoading] = useState(true);
+  
+  
     const [autoId, setAutoId] = useState(null);
     const [response, setResponse] = useState(null);
 
@@ -31,6 +32,7 @@ const Table_List_Brand = () => {
         };
         fetchData();
     },[response]);
+   
     const deleteAuto = (e, id) => {
         e.preventDefault();
         fetch(AUTO_API_BASE_URL + "/" + id, {
@@ -78,7 +80,7 @@ const Table_List_Brand = () => {
                                 
                             <button className="btn"><i className="fa fa-edit" 
                                         onClick={(e,id) => editAuto(e, auto.id)} href="/Brand/Edit_brand" autoId={autoId}/>   
-                                        <Link href="/Brand/Edit_brand"></Link>
+                                       
 
                                         </button>
                         <button className="btn"><i className="fa fa-close" 

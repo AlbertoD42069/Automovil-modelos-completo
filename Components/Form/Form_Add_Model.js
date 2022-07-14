@@ -1,79 +1,134 @@
+import {React, useState } from "react";
+
 const Form_Add_Brand= () => {
+
+  const AUTO_MODEL_API_BASE_URL = "http://localhost:8080/api/modelos";
+  const [model, setModel] = useState({
+    id:"",
+    marca:"",
+    modelo:"",
+    calificacion:"",
+    precio:"",
+    estatus:"",
+  }); 
+
+  const [responseModel, setResponseModel]  = useState ({
+    id:"",
+    marca:"",
+    modelo:"",
+    calificacion:"",
+    precio:"",
+    estatus:"",
+  })
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setModel({ ...model, [event.target.name]: value });
+  };
+
+  const saveModel = async (e) => {
+    e.preventDefault();    
+    const response = await fetch(AUTO_MODEL_API_BASE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(model),
+      });
+       if (!response.ok) {
+        throw new Error("Something went wrong");
+    }
+    const _model = await response.json();
+    setResponseModel(_model);
+    reset(e);
+  };
+
+  const reset =(e) => {
+    e.preventDefault();
+    setAutomovil({
+      id:"",
+      marca:"",
+      modelo:"",
+      calificacion:"",
+      precio:"",
+      estatus:"",
+    });
+  }
+
     return (
         <form>
         <div className="form-group row">
           <label htmlFor="staticEmail" className="col-sm-2 col-form-label">
-            Nombre
+            Marca
           </label>
           <div className="col-sm-5">
             <input
               type="text"
               className="form-control"
-              id="staticEmail"
-            />
+              name="marca"
+              value={model.marca}
+              onChange={(e) => handleChange(e)}            />
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
-            Pais de origen
+          <label className="col-sm-2 col-form-label">
+            Modelo
           </label>
           <div className="col-sm-5">
-            <select class="form-control form-control-lg">
-              <option>Alemania</option>
-              <option>Brasil</option>
-              <option>China</option> 
-              <option>Corea del Sur</option> 
-              <option>España</option>
-              <option>Estados Unidos</option>
-              <option>Francia</option>
-            </select>
+          <input
+              type="text"
+              name="modelo"
+              value={model.modelo}
+              onChange={(e) => handleChange(e)}
+              className="form-control"
+            />
           </div>
         </div>
         
         <div className="form-group row">
-          <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
+          <label className="col-sm-2 col-form-label">
             Calificacion
           </label>
           <div className="col-sm-5">
-          <select class="form-control form-control-lg">
-              <option>1</option>
-              <option>1.5</option>
-              <option>2</option>
-              <option>2.5</option>
-              <option>3</option>
-              <option>3.5</option>
-              <option>4</option> 
-              <option>4.5</option> 
-              <option>5</option> 
-              <option>5.5</option> 
-              <option>6</option>
-              <option>6.5</option>
-              <option>7</option>
-              <option>7.5</option>
-              <option>8</option>
-              <option>8.5</option>
-              <option>9</option>
-              <option>9.5</option>
-              <option>10</option>
-
-            </select>
+          <input
+              type="text"
+              name="calificacion"
+              value={model.calificacion}
+              onChange={(e) => handleChange(e)}
+              className="form-control"
+            />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
-            Descripcion
+            Precio
           </label>
           <div className="col-sm-5">
             <input
-              type="password"
+              type="text"
               className="form-control"
-              id="inputPassword"
+              name="precio"
+              value={model.precio}
+              onChange={(e) => handleChange(e)}
             />
           </div>
         </div>
-        
+        <div className="form-group row">
+          <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
+            Estatus
+          </label>
+          <div className="col-sm-5">
+            <input
+              type="text"
+              className="form-control"
+              name="estatus"
+              value={model.estatus}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+        </div>
         <div className="row justify-content-around col-3">
-        <button type="button" className="btn btn-primary rounded">
+        <button type="button" className="btn btn-primary rounded" onClick={saveModel}>
           Continuar
         </button>
         <button type="button" className="btn btn btn-danger rounded" >
