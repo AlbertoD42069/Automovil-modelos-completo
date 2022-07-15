@@ -55,7 +55,7 @@ const Form_Add_Brand= () => {
     return (
         <form>
         <div className="form-group row">
-          <label htmlFor="staticEmail" className="col-sm-2 col-form-label">
+          <label className="col-sm-2 col-form-label">
             Nombre
           </label>
           <div className="col-sm-5">

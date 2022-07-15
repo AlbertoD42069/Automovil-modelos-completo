@@ -31,7 +31,7 @@ const Table_List_Brand = () => {
             setLoading(false); 
         };
         fetchData();
-    },[response]);
+    },[]);
    
     const deleteAuto = (e, id) => {
         e.preventDefault();
@@ -85,8 +85,10 @@ const Table_List_Brand = () => {
                                         </button>
                         <button className="btn"><i className="fa fa-close" 
                                 onClick={(e, id) => deleteAuto(e,auto.id)}/></button>
-                                
-                        <button className="btn"><i className="fa fa-eye" /></button>      
+                         <a href="">      
+                        <button className="btn" auto={auto} key={auto.id}><i className="fa fa-eye" />
+                        </button>
+                        </a>      
                         </div>              
                         </td>
                         </tr>

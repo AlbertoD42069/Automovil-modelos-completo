@@ -1,6 +1,9 @@
 import {React, useState } from "react";
 
 const Form_Add_Brand= () => {
+  const AUTO_API_BASE_URL = "http://localhost:8080/api/automovil";
+
+
 
   const AUTO_MODEL_API_BASE_URL = "http://localhost:8080/api/modelos";
   const [model, setModel] = useState({
@@ -10,6 +13,10 @@ const Form_Add_Brand= () => {
     calificacion:"",
     precio:"",
     estatus:"",
+    automovil: {
+      id: "",
+    },
+    
   }); 
 
   const [responseModel, setResponseModel]  = useState ({
@@ -19,7 +26,10 @@ const Form_Add_Brand= () => {
     calificacion:"",
     precio:"",
     estatus:"",
-  })
+    automovil: {
+      id: "",
+    },
+  });
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -58,7 +68,7 @@ const Form_Add_Brand= () => {
     return (
         <form>
         <div className="form-group row">
-          <label htmlFor="staticEmail" className="col-sm-2 col-form-label">
+          <label className="col-sm-2 col-form-label">
             Marca
           </label>
           <div className="col-sm-5">
@@ -67,7 +77,8 @@ const Form_Add_Brand= () => {
               className="form-control"
               name="marca"
               value={model.marca}
-              onChange={(e) => handleChange(e)}            />
+              onChange={(e) => handleChange(e)}            
+              />
           </div>
         </div>
         <div className="form-group row">
@@ -128,7 +139,8 @@ const Form_Add_Brand= () => {
           </div>
         </div>
         <div className="row justify-content-around col-3">
-        <button type="button" className="btn btn-primary rounded" onClick={saveModel}>
+        <button type="button" className="btn btn-primary rounded" 
+        onClick={saveModel}>
           Continuar
         </button>
         <button type="button" className="btn btn btn-danger rounded" >

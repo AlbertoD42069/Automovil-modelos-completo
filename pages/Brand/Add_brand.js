@@ -5,6 +5,7 @@ import Confirmation_panel from "../../Components/Confirmation_panel"
 //import Confirmation_panel from "../Confirmation_panel";
 import Warning from "../../Components/Warning";
 import Form_Add_Brand from "../../Components/Form/Form_Add_Brand";
+import View_Brand from "../../Components/View_Brand";
 
 const Add_brand = (props) => {
     return (
@@ -18,7 +19,7 @@ const Add_brand = (props) => {
                 <h3>Agregar marca</h3><br/>
                 <div><Form_Add_Brand/></div> <br/>
                 <div><Confirmation_panel/></div> <br/>
-                <div><Warning/></div>
+                <div><Warning/></div> <br/>
                 </div>
             </div>
         </div>

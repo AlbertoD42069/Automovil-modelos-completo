@@ -29,6 +29,19 @@ const Table_model = () => {
         fetchData();
     },[]);
 
+    const deleteModel = (e, id) => {
+        e.preventDefault();
+        fetch (AUTO_MODEL_API_BASE_URL + "/" + id, {
+            method: "DELETE",
+        }).then((res) => {
+            if (model) {
+                setModel((prevElement) => {
+                    return prevElement.filter((model) => model.id !==id)
+                })
+            }
+        })
+    }
+
 
     return (
         <div>
@@ -49,7 +62,7 @@ const Table_model = () => {
                         {!loading && (
                             <tbody>
                                 {model?.map((model) => (
-                                    <tr model={model} key={model.id}>
+                                    <tr model={model} key={model.id} deleteModel={deleteModel}>
                                         <th scope="row"> {model.id} </th>
                                             <td> {model.marca} </td>
                                             <td> {model.modelo} </td>
@@ -59,7 +72,8 @@ const Table_model = () => {
                                             <td>
                                             <div>
                                                 <button className="btn"><i className="fa fa-edit" /></button>
-                                                <button className="btn"><i className="fa fa-close" /></button>
+                                                <button className="btn"><i className="fa fa-close" 
+                                                onClick={(e, id) => deleteModel(e,model.id)}/></button>
                                                 <button className="btn"><i className="fa fa-eye" /></button>
                                                 </div>
                                             </td>

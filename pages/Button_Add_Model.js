@@ -3,7 +3,7 @@ const Button_Add_Model = () => {
     return (
         <div style={{ display: "flex" }}>
                     
-                    <Link href="/Brand/Add_model">
+                    <Link href="/Model/Add_Model">
                     <button type="button" className="btn btn-primary rounded" style={{ marginLeft: "auto" }}>
                         Agregar
                     </button>

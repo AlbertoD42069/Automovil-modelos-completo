@@ -28,7 +28,9 @@ const Index = () => {
                 <div style={{ display: "flex" }}>
                     <div style={{ marginLeft: "auto" }}><Pagination/></div>
                 </div>
-                    <Button_Add_Auto/>
+                <div style={{ display: "flex" }}>
+                    <div style={{ marginLeft: "auto" }}><Button_Add_Auto/><br/></div>
+                </div>
                 </div>
                 </div>
                 

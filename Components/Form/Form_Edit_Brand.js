@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+  import { React, useEffect, useState } from "react";
 
 const Form_Edit_Brand = ( autoId , setResponse) => {
   const AUTO_API_BASE_URL = "http://localhost:8080/api/automovil";
@@ -31,12 +31,12 @@ const Form_Edit_Brand = ( autoId , setResponse) => {
     }
   }, [autoId])
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setAutomovil({ ...automovil, [event.target.name]: value });
-  };
-
-  const updateAutomovil = async (e) => {
+    const handleChange = (event) => {
+      const value = event.target.value;
+      setAutomovil({ ...automovil, [event.target.name]: value });
+    };
+  
+    const updateAutomovil = async (e) => {
     e.preventDefault();
     const response = await fetch(AUTO_API_BASE_URL + "/" + autoId, {
       method: "PUT",
@@ -52,6 +52,7 @@ const Form_Edit_Brand = ( autoId , setResponse) => {
     setResponse(_auto);
     reset(e);
   };
+  
 
     return (
         <form>
